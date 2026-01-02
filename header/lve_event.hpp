@@ -1,0 +1,40 @@
+#pragma once
+
+#include "lve_entity.hpp"
+#include <any>
+#include <unordered_map>
+
+namespace lve
+{
+	class Event
+	{
+	public:
+		Event() = delete;
+
+		explicit Event(EventId type)
+			: mType(type)
+		{
+		}
+
+		template<typename T>
+		void SetParam(EventId id, T value)
+		{
+			mData[id] = value;
+		}
+
+		template<typename T>
+		T GetParam(EventId id)
+		{
+			return std::any_cast<T>(mData[id]);
+		}
+
+		EventId GetType() const
+		{
+			return mType;
+		}
+
+	private:
+		EventId mType{};
+		std::unordered_map<EventId, std::any> mData{};
+	};
+}
