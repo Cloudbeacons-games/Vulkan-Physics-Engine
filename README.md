@@ -6,4 +6,4 @@ My main objective with this project is to create a simple physics engine to impo
 
 **0.1 Release**
 
-![(01.png)]
+![For now it's just a cube with a camera controller](01.png)
